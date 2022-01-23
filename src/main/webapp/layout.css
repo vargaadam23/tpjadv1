@@ -1,0 +1,38 @@
+body{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+}
+nav{
+    
+}
+.navbar-brand{
+    font-size: 35px !important;
+    font-weight: 700;
+    color: #659cf5 !important;
+    margin-right: 160px;
+}
+.container-fluid{
+    padding:0 50px;
+    
+}
+.nav-item{
+    margin: 0 10px;
+    width: 180px;
+    
+    text-align: center;
+}
+.nav-item .nav-link {
+    font-size: 20px;
+    color: black !important;
+    
+}
+.nav-item .nav-link:hover {
+    color: #659cf5 !important;
+    
+}
+.content{
+    min-height:calc(100vh - 135px);
+}
+footer{
+    height: 50px;
+}

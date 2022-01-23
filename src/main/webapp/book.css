@@ -1,0 +1,50 @@
+.book-container{
+    
+    height: 500px;
+    background-color: #f7f7f7;
+    
+    text-align: center;
+    border-radius: 20px;
+    padding: 10px;
+    margin: 30px 20px;
+    flex: 0 0 25%;
+}
+.image{
+    height: 60%;
+    border: 1px solid #f4f4f4;
+    border-radius: 20px;
+    background: white;
+    padding: 5px;
+    
+}
+img{
+    object-fit: cover;
+    height: 100%;
+    
+}
+.info{
+
+}
+.button{
+   
+}
+.book-content{  
+    margin-top: 20px;
+}
+.btn-book{
+    background-color: #659cf5;
+    border: #659cf5;
+    transition: 0.2s;
+    width: 60%;
+}
+.btn-book:hover{
+    background-color: #f5be65;
+}
+.btn-book:focus{
+    background-color: #f5be65;
+}
+.book-list{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}

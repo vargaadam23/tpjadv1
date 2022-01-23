@@ -1,0 +1,14 @@
+<html t:type="layout" title="Index | Ver1"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">
+
+    <div class="index-container">
+        <div class="img-container">
+                <img src="${asset:context:/books2.jpg}" class="img-hero" alt=""></img>
+        </div>
+        <div class="text-container">
+                <h3 class="index-title">Bine ati venit!</h3>
+                <p>Text text text text etxr</p>
+        </div>
+    </div>
+
+</html>

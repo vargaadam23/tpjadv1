@@ -1,0 +1,26 @@
+<html t:type="layout" title="BookList | Ver1"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+      xmlns:p="tapestry:parameter">
+
+<div class="book-list">
+      <t:unless test="books?.empty">
+            <t:loop source="books" value="book">
+                  <div class="container book-container">  
+                        <div class="image">
+                        <img src="images/${book.image}" alt="image"></img>
+                        </div>
+                        <div class="info book-content">
+                        <h4>${book.name}</h4>
+                        <small>${book.genre}</small>
+                        <h4>Pret: ${book.price}$</h4>
+                        </div>
+                        <div class="button book-content">
+                        <button class="btn btn-secondary btn-book">Add to cart</button>
+                        </div>
+                  </div>
+            </t:loop>
+      </t:unless>
+</div>
+
+          
+</html>

@@ -1,0 +1,302 @@
+EXCEPTION STACK:
+
+
+  Exception: java.lang.RuntimeException
+    Message: Exception constructing service 'ValueEncoderSource': Error invoking service contribution method org.apache.tapestry5.hibernate.web.modules.HibernateModule.contributeValueEncoderSource(MappedConfiguration, boolean, HibernateSessionSource, Session, TypeCoercer, PropertyAccess, LoggerSource): Exception constructing service 'HibernateSessionSource': Error invoking constructor public org.apache.tapestry5.hibernate.internal.HibernateSessionSourceImpl(org.slf4j.Logger,java.util.List): Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment]
+
+  Exception: org.apache.tapestry5.ioc.internal.OperationException
+    Message: Error invoking constructor public org.apache.tapestry5.hibernate.internal.HibernateSessionSourceImpl(org.slf4j.Logger,java.util.List): Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment]
+      trace: Handling page render request for page BookList
+             Constructing instance of page class org.tpjad.pages.BookList
+             Realizing service ValueEncoderSource
+             Instantiating service ValueEncoderSource implementation via org.apache.tapestry5.internal.services.ValueEncoderSourceImpl(Map) (at ValueEncoderSourceImpl.java:37) via org.apache.tapestry5.modules.TapestryModule.bind(ServiceBinder) (at TapestryModule.java:474)
+             Creating plan to instantiate org.apache.tapestry5.internal.services.ValueEncoderSourceImpl via public org.apache.tapestry5.internal.services.ValueEncoderSourceImpl(java.util.Map)
+             Determining injection value for parameter #1 (java.util.Map)
+             Collecting mapped configuration for service ValueEncoderSource
+             Invoking org.apache.tapestry5.hibernate.web.modules.HibernateModule.contributeValueEncoderSource(MappedConfiguration, boolean, HibernateSessionSource, Session, TypeCoercer, PropertyAccess, LoggerSource) (at HibernateModule.java:98)
+             Realizing service HibernateSessionSource
+             Instantiating service HibernateSessionSource implementation via org.apache.tapestry5.hibernate.internal.HibernateSessionSourceImpl(Logger, List) (at HibernateSessionSourceImpl.java:40) via org.apache.tapestry5.hibernate.modules.HibernateCoreModule.bind(ServiceBinder) (at HibernateCoreModule.java:43)
+             Invoking constructor org.apache.tapestry5.hibernate.internal.HibernateSessionSourceImpl(Logger, List) (at HibernateSessionSourceImpl.java:40) via org.apache.tapestry5.hibernate.modules.HibernateCoreModule.bind(ServiceBinder) (at HibernateCoreModule.java:43) (for service 'HibernateSessionSource')
+
+  Exception: java.lang.RuntimeException
+    Message: Error invoking constructor public org.apache.tapestry5.hibernate.internal.HibernateSessionSourceImpl(org.slf4j.Logger,java.util.List): Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment]
+
+  Exception: org.hibernate.service.spi.ServiceException
+    Message: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment]
+
+  Exception: org.hibernate.boot.registry.classloading.spi.ClassLoadingException
+    Message: Unable to load class [com.mysql.jdbc.jdbc2.optional.MysqlXADataSource]
+
+  Exception: java.lang.ClassNotFoundException
+    Message: Could not load requested class : com.mysql.jdbc.jdbc2.optional.MysqlXADataSource
+
+  Stack trace:
+
+  - org.hibernate.boot.registry.classloading.internal.ClassLoaderServiceImpl$AggregatedClassLoader.findClass(ClassLoaderServiceImpl.java:342)
+  - java.lang.ClassLoader.loadClass(ClassLoader.java:418)
+  - java.lang.ClassLoader.loadClass(ClassLoader.java:351)
+  - java.lang.Class.forName0(Native Method)
+  - java.lang.Class.forName(Class.java:348)
+  - org.hibernate.boot.registry.classloading.internal.ClassLoaderServiceImpl.classForName(ClassLoaderServiceImpl.java:351)
+  - org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.loadDriverIfPossible(DriverManagerConnectionProviderImpl.java:163)
+  - org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.buildCreator(DriverManagerConnectionProviderImpl.java:119)
+  - org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.buildPool(DriverManagerConnectionProviderImpl.java:103)
+  - org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.configure(DriverManagerConnectionProviderImpl.java:75)
+  - org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.configureService(StandardServiceRegistryImpl.java:100)
+  - org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:246)
+  - org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214)
+  - org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.buildJdbcConnectionAccess(JdbcEnvironmentInitiator.java:145)
+  - org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:66)
+  - org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:35)
+  - org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:94)
+  - org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263)
+  - org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:237)
+  - org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214)
+  - org.hibernate.id.factory.internal.DefaultIdentifierGeneratorFactory.injectServices(DefaultIdentifierGeneratorFactory.java:152)
+  - org.hibernate.service.internal.AbstractServiceRegistryImpl.injectDependencies(AbstractServiceRegistryImpl.java:286)
+  - org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:243)
+  - org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214)
+  - org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:179)
+  - org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:119)
+  - org.hibernate.boot.model.process.spi.MetadataBuildingProcess.build(MetadataBuildingProcess.java:84)
+  - org.hibernate.boot.internal.MetadataBuilderImpl.build(MetadataBuilderImpl.java:474)
+  - org.hibernate.boot.internal.MetadataBuilderImpl.build(MetadataBuilderImpl.java:85)
+  - org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:689)
+  - org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:724)
+  - org.apache.tapestry5.hibernate.internal.HibernateSessionSourceImpl.<init>(HibernateSessionSourceImpl.java:50)
+  - sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+  - sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+  - sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+  - java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+  - org.apache.tapestry5.ioc.internal.util.ConstructorInvoker.invoke(ConstructorInvoker.java:50)
+  - org.apache.tapestry5.ioc.internal.util.LoggingInvokableWrapper.invoke(LoggingInvokableWrapper.java:43)
+  - org.apache.tapestry5.ioc.internal.OperationTrackerImpl.invoke(OperationTrackerImpl.java:82)
+  - org.apache.tapestry5.ioc.internal.PerThreadOperationTracker.invoke(PerThreadOperationTracker.java:72)
+  - org.apache.tapestry5.ioc.internal.RegistryImpl.invoke(RegistryImpl.java:1298)
+  - org.apache.tapestry5.ioc.internal.util.ConstructionPlan.createObject(ConstructionPlan.java:62)
+  - org.apache.tapestry5.ioc.internal.ConstructorServiceCreator.createObject(ConstructorServiceCreator.java:62)
+  - org.apache.tapestry5.ioc.internal.OperationTrackingObjectCreator$1.invoke(OperationTrackingObjectCreator.java:47)
+  - org.apache.tapestry5.ioc.internal.OperationTrackerImpl.invoke(OperationTrackerImpl.java:82)
+  - org.apache.tapestry5.ioc.internal.PerThreadOperationTracker.invoke(PerThreadOperationTracker.java:72)
+  - org.apache.tapestry5.ioc.internal.RegistryImpl.invoke(RegistryImpl.java:1298)
+  - org.apache.tapestry5.ioc.internal.OperationTrackingObjectCreator.createObject(OperationTrackingObjectCreator.java:51)
+  - org.apache.tapestry5.ioc.internal.SingletonServiceLifecycle.createService(SingletonServiceLifecycle.java:30)
+  - org.apache.tapestry5.ioc.internal.LifecycleWrappedServiceCreator.createObject(LifecycleWrappedServiceCreator.java:47)
+  - org.apache.tapestry5.ioc.internal.AdvisorStackBuilder.createObject(AdvisorStackBuilder.java:64)
+  - org.apache.tapestry5.ioc.internal.InterceptorStackBuilder.createObject(InterceptorStackBuilder.java:55)
+  - org.apache.tapestry5.ioc.internal.RecursiveServiceCreationCheckWrapper.createObject(RecursiveServiceCreationCheckWrapper.java:61)
+  - org.apache.tapestry5.ioc.internal.OperationTrackingObjectCreator$1.invoke(OperationTrackingObjectCreator.java:47)
+  - org.apache.tapestry5.ioc.internal.OperationTrackerImpl.invoke(OperationTrackerImpl.java:82)
+  - org.apache.tapestry5.ioc.internal.PerThreadOperationTracker.invoke(PerThreadOperationTracker.java:72)
+  - org.apache.tapestry5.ioc.internal.RegistryImpl.invoke(RegistryImpl.java:1298)
+  - org.apache.tapestry5.ioc.internal.OperationTrackingObjectCreator.createObject(OperationTrackingObjectCreator.java:51)
+  - org.apache.tapestry5.ioc.internal.services.JustInTimeObjectCreator.obtainObjectFromCreator(JustInTimeObjectCreator.java:68)
+  - org.apache.tapestry5.ioc.internal.services.JustInTimeObjectCreator.createObject(JustInTimeObjectCreator.java:56)
+  - $HibernateSessionSource_113ae8c509ad.delegate(Unknown Source)
+  - $HibernateSessionSource_113ae8c509ad.getSessionFactory(Unknown Source)
+  - org.apache.tapestry5.hibernate.web.modules.HibernateModule.contributeValueEncoderSource(HibernateModule.java:101)
+  - sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+  - sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+  - sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+  - java.lang.reflect.Method.invoke(Method.java:498)
+  - org.apache.tapestry5.ioc.internal.ContributionDefImpl.invokeMethod(ContributionDefImpl.java:133)
+  - org.apache.tapestry5.ioc.internal.ContributionDefImpl.contribute(ContributionDefImpl.java:99)
+  - org.apache.tapestry5.ioc.internal.RegistryImpl$8.run(RegistryImpl.java:715)
+  - org.apache.tapestry5.ioc.internal.OperationTrackerImpl.run(OperationTrackerImpl.java:56)
+  - org.apache.tapestry5.ioc.internal.PerThreadOperationTracker.run(PerThreadOperationTracker.java:60)
+  - org.apache.tapestry5.ioc.internal.RegistryImpl.addToMappedConfiguration(RegistryImpl.java:710)
+  - org.apache.tapestry5.ioc.internal.RegistryImpl.getMappedConfiguration(RegistryImpl.java:659)
+  - org.apache.tapestry5.ioc.internal.ServiceResourcesImpl$3.invoke(ServiceResourcesImpl.java:141)
+  - org.apache.tapestry5.ioc.internal.ServiceResourcesImpl$3.invoke(ServiceResourcesImpl.java:137)
+  - org.apache.tapestry5.ioc.internal.OperationTrackerImpl.invoke(OperationTrackerImpl.java:82)
+  - org.apache.tapestry5.ioc.internal.PerThreadOperationTracker.invoke(PerThreadOperationTracker.java:72)
+  - org.apache.tapestry5.ioc.internal.RegistryImpl.invoke(RegistryImpl.java:1298)
+  - org.apache.tapestry5.ioc.internal.ServiceResourcesImpl.getMappedConfiguration(ServiceResourcesImpl.java:135)
+  - org.apache.tapestry5.ioc.internal.AbstractServiceCreator.getMappedConfiguration(AbstractServiceCreator.java:149)
+  - org.apache.tapestry5.ioc.internal.AbstractServiceCreator.access$300(AbstractServiceCreator.java:39)
+  - org.apache.tapestry5.ioc.internal.AbstractServiceCreator$1.findResource(AbstractServiceCreator.java:112)
+  - org.apache.tapestry5.ioc.internal.util.DelegatingInjectionResources.findResource(DelegatingInjectionResources.java:39)
+  - org.apache.tapestry5.ioc.internal.util.InternalUtils.calculateInjection(InternalUtils.java:213)
+  - org.apache.tapestry5.ioc.internal.util.InternalUtils.access$000(InternalUtils.java:65)
+  - org.apache.tapestry5.ioc.internal.util.InternalUtils$4.invoke(InternalUtils.java:273)
+  - org.apache.tapestry5.ioc.internal.util.InternalUtils$4.invoke(InternalUtils.java:269)
+  - org.apache.tapestry5.ioc.internal.OperationTrackerImpl.invoke(OperationTrackerImpl.java:82)
+  - org.apache.tapestry5.ioc.internal.PerThreadOperationTracker.invoke(PerThreadOperationTracker.java:72)
+  - org.apache.tapestry5.ioc.internal.RegistryImpl.invoke(RegistryImpl.java:1298)
+  - org.apache.tapestry5.ioc.internal.util.InternalUtils.calculateParameters(InternalUtils.java:277)
+  - org.apache.tapestry5.ioc.internal.util.InternalUtils$20.invoke(InternalUtils.java:1387)
+  - org.apache.tapestry5.ioc.internal.util.InternalUtils$20.invoke(InternalUtils.java:1381)
+  - org.apache.tapestry5.ioc.internal.OperationTrackerImpl.invoke(OperationTrackerImpl.java:82)
+  - org.apache.tapestry5.ioc.internal.PerThreadOperationTracker.invoke(PerThreadOperationTracker.java:72)
+  - org.apache.tapestry5.ioc.internal.RegistryImpl.invoke(RegistryImpl.java:1298)
+  - org.apache.tapestry5.ioc.internal.util.InternalUtils.createConstructorConstructionPlan(InternalUtils.java:1378)
+  - org.apache.tapestry5.ioc.internal.ConstructorServiceCreator.getPlan(ConstructorServiceCreator.java:52)
+  - org.apache.tapestry5.ioc.internal.ConstructorServiceCreator.createObject(ConstructorServiceCreator.java:62)
+  - org.apache.tapestry5.ioc.internal.OperationTrackingObjectCreator$1.invoke(OperationTrackingObjectCreator.java:47)
+  - org.apache.tapestry5.ioc.internal.OperationTrackerImpl.invoke(OperationTrackerImpl.java:82)
+  - org.apache.tapestry5.ioc.internal.PerThreadOperationTracker.invoke(PerThreadOperationTracker.java:72)
+  - org.apache.tapestry5.ioc.internal.RegistryImpl.invoke(RegistryImpl.java:1298)
+  - org.apache.tapestry5.ioc.internal.OperationTrackingObjectCreator.createObject(OperationTrackingObjectCreator.java:51)
+  - org.apache.tapestry5.ioc.internal.SingletonServiceLifecycle.createService(SingletonServiceLifecycle.java:30)
+  - org.apache.tapestry5.ioc.internal.LifecycleWrappedServiceCreator.createObject(LifecycleWrappedServiceCreator.java:47)
+  - org.apache.tapestry5.ioc.internal.AdvisorStackBuilder.createObject(AdvisorStackBuilder.java:64)
+  - org.apache.tapestry5.ioc.internal.InterceptorStackBuilder.createObject(InterceptorStackBuilder.java:55)
+  - org.apache.tapestry5.ioc.internal.RecursiveServiceCreationCheckWrapper.createObject(RecursiveServiceCreationCheckWrapper.java:61)
+  - org.apache.tapestry5.ioc.internal.OperationTrackingObjectCreator$1.invoke(OperationTrackingObjectCreator.java:47)
+  - org.apache.tapestry5.ioc.internal.OperationTrackerImpl.invoke(OperationTrackerImpl.java:82)
+  - org.apache.tapestry5.ioc.internal.PerThreadOperationTracker.invoke(PerThreadOperationTracker.java:72)
+  - org.apache.tapestry5.ioc.internal.RegistryImpl.invoke(RegistryImpl.java:1298)
+  - org.apache.tapestry5.ioc.internal.OperationTrackingObjectCreator.createObject(OperationTrackingObjectCreator.java:51)
+  - org.apache.tapestry5.ioc.internal.services.JustInTimeObjectCreator.obtainObjectFromCreator(JustInTimeObjectCreator.java:68)
+  - org.apache.tapestry5.ioc.internal.services.JustInTimeObjectCreator.createObject(JustInTimeObjectCreator.java:56)
+  - $ValueEncoderSource_113ae8c509e5.delegate(Unknown Source)
+  - $ValueEncoderSource_113ae8c509e5.getValueEncoder(Unknown Source)
+  - org.apache.tapestry5.internal.services.ComponentDefaultProviderImpl.defaultValueEncoder(ComponentDefaultProviderImpl.java:124)
+  - $ComponentDefaultProvider_113ae8c509ea.defaultValueEncoder(Unknown Source)
+  - org.apache.tapestry5.corelib.components.Loop.defaultEncoder(Loop.java:302)
+  - org.apache.tapestry5.corelib.components.Loop$Shim_113ae8c50a80.invoke(Unknown Source)
+  - org.apache.tapestry5.internal.plastic.MethodHandleImpl.invoke(MethodHandleImpl.java:50)
+  - org.apache.tapestry5.internal.transform.ParameterWorker$3$1.invokeDefaultMethod(ParameterWorker.java:430)
+  - org.apache.tapestry5.internal.transform.ParameterWorker$3$1.getDefaultBindingForParameter(ParameterWorker.java:412)
+  - org.apache.tapestry5.internal.transform.ParameterWorker$3$1.load(ParameterWorker.java:336)
+  - org.apache.tapestry5.internal.transform.ParameterWorker$3$1$1.run(ParameterWorker.java:204)
+  - org.apache.tapestry5.internal.structure.PageImpl.invokeCallbacks(PageImpl.java:366)
+  - org.apache.tapestry5.internal.structure.PageImpl.loaded(PageImpl.java:234)
+  - org.apache.tapestry5.internal.pageload.PageLoaderImpl$3.invoke(PageLoaderImpl.java:219)
+  - org.apache.tapestry5.internal.pageload.PageLoaderImpl$3.invoke(PageLoaderImpl.java:204)
+  - org.apache.tapestry5.ioc.internal.OperationTrackerImpl.invoke(OperationTrackerImpl.java:82)
+  - org.apache.tapestry5.ioc.internal.PerThreadOperationTracker.invoke(PerThreadOperationTracker.java:72)
+  - org.apache.tapestry5.ioc.internal.RegistryImpl.invoke(RegistryImpl.java:1298)
+  - org.apache.tapestry5.internal.pageload.PageLoaderImpl.loadPage(PageLoaderImpl.java:203)
+  - $PageLoader_113ae8c50a02.loadPage(Unknown Source)
+  - org.apache.tapestry5.internal.services.PageSourceImpl.getPage(PageSourceImpl.java:104)
+  - $PageSource_113ae8c50a01.getPage(Unknown Source)
+  - org.apache.tapestry5.internal.services.RequestPageCacheImpl.get(RequestPageCacheImpl.java:86)
+  - $RequestPageCache_113ae8c50a00.get(Unknown Source)
+  - $RequestPageCache_113ae8c509fb.get(Unknown Source)
+  - org.apache.tapestry5.internal.services.PageRenderRequestHandlerImpl.handle(PageRenderRequestHandlerImpl.java:61)
+  - org.apache.tapestry5.modules.TapestryModule$33.handle(TapestryModule.java:2027)
+  - $PageRenderRequestHandler_113ae8c509ff.handle(Unknown Source)
+  - $PageRenderRequestHandler_113ae8c509f9.handle(Unknown Source)
+  - org.apache.tapestry5.internal.services.ComponentRequestHandlerTerminator.handlePageRender(ComponentRequestHandlerTerminator.java:54)
+  - org.apache.tapestry5.internal.services.DeferredResponseRenderer.handlePageRender(DeferredResponseRenderer.java:57)
+  - $ComponentRequestHandler_113ae8c509fa.handlePageRender(Unknown Source)
+  - org.apache.tapestry5.services.InitializeActivePageName.handlePageRender(InitializeActivePageName.java:49)
+  - $ComponentRequestHandler_113ae8c509fa.handlePageRender(Unknown Source)
+  - org.apache.tapestry5.internal.services.RequestOperationTracker$2.run(RequestOperationTracker.java:78)
+  - org.apache.tapestry5.ioc.internal.OperationTrackerImpl.run(OperationTrackerImpl.java:56)
+  - org.apache.tapestry5.ioc.internal.PerThreadOperationTracker.run(PerThreadOperationTracker.java:60)
+  - org.apache.tapestry5.ioc.internal.RegistryImpl.run(RegistryImpl.java:1292)
+  - org.apache.tapestry5.internal.services.RequestOperationTracker.handlePageRender(RequestOperationTracker.java:71)
+  - $ComponentRequestHandler_113ae8c509fa.handlePageRender(Unknown Source)
+  - $ComponentRequestHandler_113ae8c509c8.handlePageRender(Unknown Source)
+  - org.apache.tapestry5.internal.services.PageRenderDispatcher.dispatch(PageRenderDispatcher.java:61)
+  - $Dispatcher_113ae8c509ca.dispatch(Unknown Source)
+  - $Dispatcher_113ae8c509bf.dispatch(Unknown Source)
+  - org.apache.tapestry5.http.modules.TapestryHttpModule$RequestHandlerTerminator.service(TapestryHttpModule.java:381)
+  - org.tpjad.services.AppModule$1.service(AppModule.java:111)
+  - $RequestFilter_113ae8c509be.service(Unknown Source)
+  - $RequestHandler_113ae8c509c0.service(Unknown Source)
+  - org.apache.tapestry5.internal.services.RequestErrorFilter.service(RequestErrorFilter.java:31)
+  - $RequestHandler_113ae8c509c0.service(Unknown Source)
+  - org.apache.tapestry5.modules.TapestryModule$2.service(TapestryModule.java:986)
+  - $RequestHandler_113ae8c509c0.service(Unknown Source)
+  - org.apache.tapestry5.modules.TapestryModule$1.service(TapestryModule.java:976)
+  - $RequestHandler_113ae8c509c0.service(Unknown Source)
+  - org.apache.tapestry5.internal.services.StaticFilesFilter.service(StaticFilesFilter.java:89)
+  - $RequestHandler_113ae8c509c0.service(Unknown Source)
+  - org.apache.tapestry5.internal.services.CheckForUpdatesFilter$2.invoke(CheckForUpdatesFilter.java:110)
+  - org.apache.tapestry5.internal.services.CheckForUpdatesFilter$2.invoke(CheckForUpdatesFilter.java:100)
+  - org.apache.tapestry5.ioc.internal.util.ConcurrentBarrier.withRead(ConcurrentBarrier.java:83)
+  - org.apache.tapestry5.internal.services.CheckForUpdatesFilter.service(CheckForUpdatesFilter.java:124)
+  - $RequestHandler_113ae8c509c0.service(Unknown Source)
+  - $RequestHandler_113ae8c509b4.service(Unknown Source)
+  - org.apache.tapestry5.http.modules.TapestryHttpModule$HttpServletRequestHandlerTerminator.service(TapestryHttpModule.java:358)
+  - org.apache.tapestry5.internal.services.IgnoredPathsFilter.service(IgnoredPathsFilter.java:69)
+  - $HttpServletRequestFilter_113ae8c509b3.service(Unknown Source)
+  - $HttpServletRequestHandler_113ae8c509b6.service(Unknown Source)
+  - org.apache.tapestry5.http.internal.gzip.GZipFilter.service(GZipFilter.java:60)
+  - $HttpServletRequestHandler_113ae8c509b6.service(Unknown Source)
+  - org.apache.tapestry5.http.modules.TapestryHttpModule$2.service(TapestryHttpModule.java:285)
+  - $HttpServletRequestHandler_113ae8c509b6.service(Unknown Source)
+  - $HttpServletRequestHandler_113ae8c509b0.service(Unknown Source)
+  - org.apache.tapestry5.http.TapestryFilter.doFilter(TapestryFilter.java:173)
+  - org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+  - org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+  - org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:200)
+  - org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+  - org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490)
+  - org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+  - org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+  - org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+  - org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+  - org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408)
+  - org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+  - org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:834)
+  - org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1415)
+  - org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+  - java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+  - java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+  - org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+  - java.lang.Thread.run(Thread.java:748)
+
+REQUEST:
+
+Basic Information:
+
+                contextPath: 
+                     method: GET
+                       path: /booklist
+                     locale: en_US
+                 serverName: localhost
+                 remoteHost: 0:0:0:0:0:0:0:1
+
+Headers:
+
+                     accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+            accept-encoding: gzip, deflate, br
+            accept-language: en-US,en;q=0.9,ro;q=0.8,hu;q=0.7
+              cache-control: max-age=0
+                 connection: keep-alive
+                       host: localhost:8080
+                  sec-ch-ua: " Not;A Brand";v="99", "Google Chrome";v="97", "Chromium";v="97"
+           sec-ch-ua-mobile: ?0
+         sec-ch-ua-platform: "Windows"
+             sec-fetch-dest: document
+             sec-fetch-mode: navigate
+             sec-fetch-site: none
+             sec-fetch-user: ?1
+  upgrade-insecure-requests: 1
+                 user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36
+
+SYSTEM INFORMATION:
+
+Memory:
+      134,439,424 bytes free
+      486,539,264 bytes total
+    1,883,242,496 bytes max
+
+23 Threads:
+                  Reference Handler WAITING, daemon, priority 10
+                          Finalizer WAITING, daemon, priority 8
+                  Signal Dispatcher RUNNABLE, daemon, priority 9
+                    Attach Listener RUNNABLE, daemon
+                               main WAITING
+          Tapestry PeriodicExecutor TIMED_WAITING
+                 Catalina-utility-1 TIMED_WAITING, priority 1
+                 Catalina-utility-2 WAITING, priority 1
+                        container-0 TIMED_WAITING
+  NioBlockingSelector.BlockPoller-1 RUNNABLE, daemon
+               http-nio-8080-exec-1 WAITING, daemon
+               http-nio-8080-exec-2 WAITING, daemon
+               http-nio-8080-exec-3 WAITING, daemon
+               http-nio-8080-exec-4 WAITING, daemon
+               http-nio-8080-exec-5 WAITING, daemon
+*              http-nio-8080-exec-6 RUNNABLE, daemon
+               http-nio-8080-exec-7 WAITING, daemon
+               http-nio-8080-exec-8 WAITING, daemon
+               http-nio-8080-exec-9 WAITING, daemon
+              http-nio-8080-exec-10 WAITING, daemon
+       http-nio-8080-ClientPoller-0 RUNNABLE, daemon
+       http-nio-8080-ClientPoller-1 RUNNABLE, daemon
+           http-nio-8080-Acceptor-0 RUNNABLE, daemon

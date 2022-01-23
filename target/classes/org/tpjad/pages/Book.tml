@@ -1,0 +1,7 @@
+<html t:type="layout" title="Book | Ver1"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+      xmlns:p="tapestry:parameter">
+
+<p><t:eventlink event="hello" class="btn btn-default">Complete&raquo;</t:eventlink></p>
+<div>${hello}</div>
+</html>
