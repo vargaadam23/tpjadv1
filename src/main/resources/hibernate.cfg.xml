@@ -9,6 +9,6 @@
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password"></property>
         <property name="hbm2ddl.auto">update</property>
-        
+       <!-- <property name="hbm2ddl.auto">create</property> -->
     </session-factory>
 </hibernate-configuration>

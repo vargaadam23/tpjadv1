@@ -6,8 +6,11 @@
                 <img src="${asset:context:/books2.jpg}" class="img-hero" alt=""></img>
         </div>
         <div class="text-container">
-                <h3 class="index-title">Bine ati venit!</h3>
-                <p>Text text text text etxr</p>
+                <h3 class="index-title">Welcome ${username}!</h3>   
+       
+                <h4>Availabile books can be viewed at the Books section</h4>   
+       
+                <h4>Your personal cart can be viewed in the Cart section</h4>   
         </div>
     </div>
 

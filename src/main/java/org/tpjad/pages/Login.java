@@ -2,6 +2,9 @@ package org.tpjad.pages;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.*;
+import org.apache.shiro.subject.Subject;
 import org.apache.tapestry5.alerts.AlertManager;
 import org.apache.tapestry5.annotations.InjectComponent;
 import org.apache.tapestry5.annotations.Property;
@@ -34,18 +37,40 @@ public class Login
 
     void onValidateFromLogin()
     {
-        if (!email.equals("users@tapestry.apache.org"))
-            login.recordError(emailField, "Try with user: users@tapestry.apache.org");
+        if (email.length()<2)
+            login.recordError(emailField, "Username too short");
 
-        if (!password.equals("Tapestry5"))
-            login.recordError(passwordField, "Try with password: Tapestry5");
+        if (password.length()<2)
+            login.recordError(passwordField, "Password too short");
     }
 
     Object onSuccessFromLogin()
     {
-        logger.info("Login successful!");
-        alertManager.success("Welcome aboard!");
-        return Index.class;
+
+        Subject currentUser = SecurityUtils.getSubject();
+        UsernamePasswordToken token = new UsernamePasswordToken(email, password);
+
+        //this is all you have to do to support 'remember me' (no config - built in!):
+        token.setRememberMe(false);
+
+        try {
+            currentUser.login( token );
+            logger.info("Login successful!");
+            return Index.class;
+        } catch ( UnknownAccountException uae ) {
+            logger.info("username wasn't in the system, show them an error message?");//
+            return Login.class;
+        } catch ( IncorrectCredentialsException ice ) {
+            logger.info("incorrect credentials?");//
+            return Login.class;
+        } catch ( LockedAccountException lae ) {
+            logger.info("uac locked?");//
+            return Login.class;
+        } catch ( AuthenticationException ae ) {
+            logger.info("Other exception?  :::::  "+ae.getMessage());//
+            return Login.class;
+        }
+
     }
 
     void onFailureFromLogin()

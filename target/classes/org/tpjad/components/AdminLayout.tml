@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">
+
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="description" content=""/>
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors"/>
+  <meta name="generator" content="Hugo 0.88.1"/>
+  <title>Dashboard Template · Bootstrap v5.1</title>
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/dashboard/"></link>
+ 
+
+
+
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+<link rel="stylesheet" href="${asset:context:/dashboard.css}"></link>
+
+</head>
+
+<body>
+
+  <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+    <t:pagelink class="navbar-brand col-md-3 col-lg-2 me-0 px-3" page="index" >Admistrare biblioteca </t:pagelink>
+    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
+      data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="navbar-nav">
+      <div class="nav-item text-nowrap">
+        <t:actionlink class="nav-link px-3" t:id="logout" >Sign out</t:actionlink>
+      </div>
+    </div>
+  </header>
+
+  <div class="container-fluid">
+    <div class="row">
+      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+        <div class="position-sticky pt-3">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <t:pagelink page="index" class="nav-link active">
+                <span data-feather="home"></span>
+                Dashboard
+              </t:pagelink>
+            </li>
+            <li class="nav-item">
+              <t:pagelink page="index" class="nav-link">
+                <span data-feather="file"></span>
+                Orders
+              </t:pagelink>
+            </li>
+            <li class="nav-item">
+              <t:pagelink page="bookadmin" class="nav-link">
+                <span data-feather="shopping-cart"></span>
+                Products
+              </t:pagelink>
+            </li>
+            <li class="nav-item">
+              <t:pagelink page="useradmin" class="nav-link">
+                <span data-feather="users"></span>
+                Customers
+              </t:pagelink>
+            </li>
+            <li class="nav-item">
+              <t:pagelink page="index" class="nav-link">
+                <span data-feather="file"></span>
+                Return to page
+              </t:pagelink>
+            </li>
+            
+          </ul>
+        </div>
+      </nav>
+
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <t:body />
+      </main>
+    </div>
+  </div>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
+    integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE"
+    crossorigin="anonymous"></script>
+  
+</body>
+
+</html>

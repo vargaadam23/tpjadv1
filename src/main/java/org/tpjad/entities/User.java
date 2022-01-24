@@ -1,165 +1,203 @@
 package org.tpjad.entities;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
-import org.hibernate.annotations.NaturalId;
-import org.hibernate.validator.constraints.Email;
+import javax.persistence.*;
+
+import org.apache.shiro.crypto.SecureRandomNumberGenerator;
+import org.apache.shiro.crypto.hash.Sha1Hash;
+import org.apache.shiro.util.ByteSource;
+import org.apache.tapestry5.beaneditor.NonVisual;
+import org.apache.tapestry5.beaneditor.Validate;
+
 
 @Entity
 @Table(name = "users")
 public class User
 {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    public static enum Role {
+        user(1), manager(5);
+        private int weight;
 
-    @NaturalId
-    @Column(nullable = false, unique = true)
-    @NotNull
-    @Size(min = 3, max = 15)
+        Role(int weight) {
+            this.weight = weight;
+        }
+
+        public int weight() {
+            return weight;
+        }
+    }
+
+    private Integer id;
+
     private String username;
 
-    @Column(nullable = false)
-    @NotNull
-    @Size(min = 3, max = 50)
-    private String fullname;
+    private String firstName;
 
-    @Column(nullable = false)
-    @NotNull
-    private String email;
+    private String lastName;
 
-    @Column(nullable = false)
-    @Size(min = 3, max = 256)
-    @NotNull
-    private String password;
+    private String emailAddress;
 
-    @Column(nullable = false)
-    @Size(min = 9, max = 14)
-    @NotNull
+    private String encodedPassword;
+
     private String phone;
 
-    public User()
-    {
-    }
+    private Date created = new Date();
 
-    public User(final String fullname, final String username, final String email, final String phone)
-    {
-        this.fullname = fullname;
-        this.username = username;
-        this.email = email;
-        this.phone = phone;
-    }
+    private boolean accountLocked;
 
-    /**
-     * Construct a new user using an already-encrypted password
-     * @param fullname the full name (e.g. "John Smith")
-     * @param username the username
-     * @param email the email address
-     * @param password the password (already encrypted)
-     */
-    public User(final String fullname, final String username, final String email,final String phone,
-                final String password)
-    {
-        this(fullname, username, email, phone);
-        this.password = password;
-    }
+    private boolean credentialsExpired;
 
-    /**
-     * Construct a user using an already-known database ID
-     * @param id the database ID (primary key)
-     * @param fullname the full name (e.g. "John Smith")
-     * @param username the username
-     * @param email the email address
-     * @param password the password (already encrypted)
-     */
-    public User(Long id, String username, String fullname, String email, String phone, String password)
-    {
-        super();
-        this.id = id;
-        this.username = username;
-        this.fullname = fullname;
-        this.email = email;
-        this.password = password;
-        this.phone = phone;
-    }
+    private Set<Role> roles = new HashSet<Role>();
 
-    @Override
-    public String toString()
-    {
-        StringBuilder builder = new StringBuilder();
-        builder.append("id ");
-        builder.append(id);
-        builder.append(",");
-        builder.append("username ");
-        builder.append(username);
-        return builder.toString();
-    }
+    private byte[] passwordSalt;
 
-    public Long getId()
-    {
+
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @NonVisual
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id)
-    {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getPhone()
-    {
-        return phone;
+    @Override
+    public boolean equals(Object obj) {
+        try {
+            return (obj instanceof User && ((User) obj).getUsername().equals(username));
+        } catch (NullPointerException e) {
+            return false;
+        }
     }
 
-    public void setPhone(String phone)
-    {
-        this.phone = phone;
+    @Override
+    public int hashCode() {
+        return username == null ? 0 : username.hashCode();
     }
 
-    public String getEmail()
-    {
-        return email;
-    }
-
-    public void setEmail(String email)
-    {
-        this.email = email;
-    }
-
-    public String getUsername()
-    {
+    @Column(unique = true)
+    public String getUsername() {
         return username;
     }
 
-    public void setUsername(String username)
-    {
+    public void setUsername(String username) {
         this.username = username;
     }
 
-    public void setFullname(String fullname)
-    {
-        this.fullname = fullname;
+    public String getPhone() {
+        return phone;
     }
 
-    public String getFullname()
-    {
-        return fullname;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
-    public String getPassword()
-    {
-        return password;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setPassword(String password)
-    {
-        this.password = password;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    @Validate("required,regexp=^[0-9a-zA-Z._%+-]+@[0-9a-zA-Z]+[\\.]{1}[0-9a-zA-Z]+[\\.]?[0-9a-zA-Z]+$")
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
+    }
+
+    @NonVisual
+    public String getEncodedPassword() {
+        return encodedPassword;
+    }
+
+    public void setEncodedPassword(String encodedPassword) {
+        this.encodedPassword = encodedPassword;
+    }
+
+    @NonVisual
+    @Temporal(TemporalType.TIMESTAMP)
+    public Date getCreated() {
+        return created;
+    }
+
+    public void setCreated(Date created) {
+        this.created = created;
+    }
+
+    public boolean isAccountLocked() {
+        return accountLocked;
+    }
+
+    public void setAccountLocked(boolean accountLocked) {
+        this.accountLocked = accountLocked;
+    }
+
+    public boolean isCredentialsExpired() {
+        return credentialsExpired;
+    }
+
+    public void setCredentialsExpired(boolean credentialsExpired) {
+        this.credentialsExpired = credentialsExpired;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles.addAll(roles);
+    }
+
+    @ElementCollection
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    @Transient
+    public String getPassword() {
+        return getEncodedPassword();
+    }
+
+    public void setPassword(String password) {
+        if (password != null && !password.equals(encodedPassword) && !"".equals(password)) {
+            ByteSource saltSource = new SecureRandomNumberGenerator().nextBytes();
+            this.passwordSalt = saltSource.getBytes();
+            this.encodedPassword = new Sha1Hash(password, saltSource).toString();
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "User " + username;
+    }
+
+    public void setPasswordSalt(byte[] passwordSalt) {
+        this.passwordSalt = passwordSalt;
+    }
+
+    @NonVisual
+    @Column(length = 128)
+    public byte[] getPasswordSalt() {
+        return passwordSalt;
+    }
+
+
+    @Transient
+    public Object getLocalAccountPrimaryPrincipal() {
+        return getId();
+    }
+
 }

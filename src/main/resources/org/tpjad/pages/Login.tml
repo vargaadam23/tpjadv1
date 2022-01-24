@@ -1,16 +1,25 @@
 <html t:type="layout" title="Login | Ver1"
       xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
       xmlns:p="tapestry:parameter">
-
+<style>
+.input-block-level{
+    margin:20px 0;
+}
+.row{
+    padding-top:50px;
+}
+</style>
 <div class="row">
+    <div class="col-3"></div>
     <div class="col-md-6 col-md-offset-3">
         <t:form t:id="login">
-            <h2>Please sign in</h2>
+            <h2>Sign in</h2>
             <t:textfield t:id="email" class="input-block-level" validate="required" placeholder="Email address"/>
             <t:passwordfield t:id="password" class="input-block-level" validate="required" placeholder="Password"/>
             <t:submit class="btn btn-large btn-primary" value="Sign in"/>
         </t:form>
     </div>
+     <div class="col-3"></div>
 </div>
 
 </html>

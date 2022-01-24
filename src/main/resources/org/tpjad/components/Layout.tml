@@ -7,14 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="description" content=""/>
     <meta name="author" content=""/>
+    <link href="${montserrat}" rel="stylesheet"/>
     <link rel="shortcut icon" href="${asset:context:/favicon.ico}"/>
     <link rel="stylesheet" href="${asset:context:/layout.css}"/>
+
       
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
-            <t:pagelink class="navbar-brand" page="index">Biblioteca TAPESTRY</t:pagelink>
+            <t:pagelink class="navbar-brand" page="index">TAPESTRY bookstore</t:pagelink>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -26,17 +28,33 @@
                         <t:pagelink class="nav-link" aria-current="page" page="index">Home</t:pagelink>
                     </li>
                     <li class="nav-item">
-                        <t:pagelink class="nav-link" page="index">Biblioteca</t:pagelink>
+                        <t:pagelink class="nav-link" page="booklist">Books</t:pagelink>
                     </li>
+                    <t:security.guest>
                     <li class="nav-item dropdown">
                         <t:pagelink class="nav-link" page="login" id="navbarDropdown" role="button">
                             Log in
                         </t:pagelink>
 
                     </li>
+                    </t:security.guest>
+                    <t:security.guest>
                     <li class="nav-item">
-                        <t:pagelink page="index" class="nav-link">Inscriere</t:pagelink>
+                        <t:pagelink page="register" class="nav-link">Register</t:pagelink>
                     </li>
+                    </t:security.guest>
+
+                    <t:security.user>
+                    <li class="nav-item">
+                       <t:pagelink page="cart" class="nav-link">Cart</t:pagelink>   
+                    </li>
+                    </t:security.user>
+
+                    <t:security.user>
+                    <li class="nav-item">
+                        <t:actionlink class="nav-link" t:id="logout"> Log out </t:actionlink>   
+                    </li>
+                    </t:security.user>
                 </ul>
 
             </div>
@@ -46,7 +64,7 @@
         <t:body />
     </div>
 
-    <footer class="bg-light text-center ">
+    <footer class="text-center ">
 
         <div class="text-center p-3">
             © 2022 Copyright

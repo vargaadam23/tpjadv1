@@ -1,18 +1,27 @@
 package org.tpjad.services;
 
+import org.apache.shiro.realm.AuthorizingRealm;
+import org.apache.shiro.realm.Realm;
+import org.apache.shiro.web.mgt.WebSecurityManager;
 import org.apache.tapestry5.SymbolConstants;
+
+import org.apache.tapestry5.commons.Configuration;
 import org.apache.tapestry5.commons.MappedConfiguration;
 import org.apache.tapestry5.commons.OrderedConfiguration;
+import org.apache.tapestry5.http.services.*;
 import org.apache.tapestry5.ioc.ServiceBinder;
-import org.apache.tapestry5.ioc.annotations.Contribute;
-import org.apache.tapestry5.ioc.annotations.Local;
+import org.apache.tapestry5.ioc.annotations.*;
 import org.apache.tapestry5.ioc.services.ApplicationDefaults;
 import org.apache.tapestry5.ioc.services.SymbolProvider;
-import org.apache.tapestry5.http.services.Request;
-import org.apache.tapestry5.http.services.RequestFilter;
-import org.apache.tapestry5.http.services.RequestHandler;
-import org.apache.tapestry5.http.services.Response;
+import org.hibernate.Session;
 import org.slf4j.Logger;
+import org.tpjad.services.interfaces.BookServiceInterface;
+import org.tpjad.services.interfaces.UserServiceInterface;
+import org.tynamo.security.Security;
+import org.tynamo.security.SecuritySymbols;
+import org.tynamo.security.services.SecurityFilterChainFactory;
+import org.tynamo.security.services.SecurityModule;
+import org.tynamo.security.services.impl.SecurityFilterChain;
 
 import java.io.IOException;
 import java.util.UUID;
@@ -21,12 +30,17 @@ import java.util.UUID;
  * This module is automatically included as part of the Tapestry IoC Registry, it's a good place to
  * configure and extend Tapestry, or to place your own service definitions.
  */
+@SubModule({ SecurityModule.class})
 public class AppModule
 {
+    @Inject
+    static Session session;
     public static void bind(ServiceBinder binder)
     {
         // binder.bind(MyServiceInterface.class, MyServiceImpl.class);
-
+        binder.bind(AuthorizingRealm.class, UserRealm.class).withId(UserRealm.class.getSimpleName());
+        binder.bind(UserServiceInterface.class,UserService.class);
+        binder.bind(BookServiceInterface.class,BookService.class);
         // Make bind() calls on the binder object to define most IoC services.
         // Use service builder methods (example below) when the implementation
         // is provided inline, or requires more initialization than simply
@@ -59,11 +73,16 @@ public class AppModule
         // You should change the passphrase immediately; the HMAC passphrase is used to secure
         // the hidden field data stored in forms to encrypt and digitally sign client-side data.
         configuration.add(SymbolConstants.HMAC_PASSPHRASE, "change this immediately-" + UUID.randomUUID());
+
+        configuration.add(SecuritySymbols.LOGIN_URL, "/login");
+        configuration.add(SecuritySymbols.UNAUTHORIZED_URL, "/login");
+        configuration.add(SecuritySymbols.SUCCESS_URL, "/");
     }
 
 	/**
 	 * Use annotation or method naming convention: <code>contributeApplicationDefaults</code>
 	 */
+
 	@Contribute(SymbolProvider.class)
 	@ApplicationDefaults
 	public static void setupEnvironment(MappedConfiguration<String, Object> configuration)
@@ -119,6 +138,55 @@ public class AppModule
         };
     }
 
+//    public static void contributeWebSecurityManager(Configuration<Realm> configuration, @Autobuild UserRealm realm) {
+//        configuration.add(realm);
+//    }
+
+
+
+    @Contribute(HttpServletRequestFilter.class)
+    @Security
+    public static void setupSecurity(OrderedConfiguration<SecurityFilterChain> configuration,
+                                     SecurityFilterChainFactory factory, WebSecurityManager securityManager) {
+//		if (securityManager instanceof DefaultSecurityManager) {
+//			DefaultSecurityManager defaultManager = (DefaultSecurityManager) securityManager;
+//
+//			// BlowfishCipher cipher = new BlowfishCipher();
+//			// defaultManager.setRememberMeCipherKey(cipher.getKey().getEncoded());
+//			// defaultManager.setRememberMeCipher(cipher);
+//			ServletContainerSessionManager sessionManager = new ServletContainerSessionManager();
+//			defaultManager.setSessionManager(sessionManager);
+//			defaultManager.setSubjectFactory(subjectFactory);
+//		}
+
+//		/authc/signup = anon
+//		/authc/** = authc
+//
+//		/user/signup = anon
+//		/user/** = user
+//		/roles/user/** = roles[user]
+//		/roles/manager/** = roles[manager]
+//		/perms/view/** = perms[news:view]
+//		/perms/edit/** = perms[news:edit]
+
+        configuration.add("authc_signup", factory.createChain("/authc/signup").add(factory.anon()).build());
+        configuration.add("authc", factory.createChain("/authc/**").add(factory.authc()).build());
+        configuration.add("partlyauthc", factory.createChain("/partlyauthc/**").add(factory.anon()).build());
+        configuration.add("contributed", factory.createChain("/contributed/**").add(factory.authc()).build());
+        configuration.add("user_signup", factory.createChain("/user/signup").add(factory.anon()).build());
+        configuration.add("user", factory.createChain("/user/**").add(factory.user()).build());
+        configuration.add("roles_user", factory.createChain("/roles/user/**").add(factory.roles(), "user").build());
+        configuration.add("roles_manager", factory.createChain("/roles/manager/**").add(factory.roles(), "manager").build());
+        configuration.add("perms_view", factory.createChain("/perms/view/**").add(factory.perms(), "news:view").build());
+        configuration.add("perms_edit", factory.createChain("/perms/edit/**").add(factory.perms(), "news:edit").build());
+
+
+        configuration.add("hidden", factory.createChain("/hidden/**").add(factory.notfound()).build());
+    }
+    @Contribute(WebSecurityManager.class)
+    public static void addRealms(Configuration<Realm> configuration, @Autobuild UserRealm realm) {
+        configuration.add(realm);
+    }
     /**
      * This is a contribution to the RequestHandler service configuration. This is how we extend
      * Tapestry using the timing filter. A common use for this kind of filter is transaction

@@ -10,12 +10,12 @@
                         <img src="images/${book.image}" alt="image"></img>
                         </div>
                         <div class="info book-content">
-                        <h4>${book.name}</h4>
-                        <small>${book.genre}</small>
-                        <h4>Pret: ${book.price}$</h4>
+                        <h4>${book.author} - ${book.name}</h4>
+                        <small style="margin-bottom:20px;">${book.genre}</small>
+                        <h4>Price: ${book.price}$</h4>
                         </div>
                         <div class="button book-content">
-                        <button class="btn btn-secondary btn-book">Add to cart</button>
+                        <t:actionlink t:id="addtocart" context="book.id" class="btn btn-secondary btn-book">Add to cart</t:actionlink >
                         </div>
                   </div>
             </t:loop>

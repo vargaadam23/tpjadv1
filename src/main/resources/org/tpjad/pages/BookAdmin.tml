@@ -1,0 +1,23 @@
+<html t:type="adminlayout" title="BookInsert | Ver1"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      xmlns:p="tapestry:parameter">
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <t:form t:id="book">
+            <h2>Please add book</h2>
+            <t:textfield t:id="name" class="input-block-level" validate="required" placeholder="Name"/>
+            <t:textfield t:id="genre" class="input-block-level" validate="required" placeholder="Genre"/>
+            <t:textfield t:id="price" class="input-block-level" validate="required" placeholder="Price"/>
+            <t:textfield t:id="image" class="input-block-level" validate="required" placeholder="Image"/>
+            <t:textfield t:id="author" class="input-block-level" validate="required" placeholder="Author"/>
+            <t:submit class="btn btn-large btn-primary" value="Add book"/>
+        </t:form>
+    </div>
+</div>
+<div class="row">
+    <t:grid source="books"
+         include="name,author,genre,price"/>
+</div>
+
+</html>

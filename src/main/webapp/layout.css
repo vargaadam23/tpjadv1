@@ -1,9 +1,13 @@
 body{
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
+    
 }
 nav{
-    
+   
+}
+html{
+    overflow-x: hidden;
 }
 .navbar-brand{
     font-size: 35px !important;
@@ -13,6 +17,7 @@ nav{
 }
 .container-fluid{
     padding:0 50px;
+    
     
 }
 .nav-item{
@@ -31,7 +36,9 @@ nav{
     
 }
 .content{
+    background-color: white;
     min-height:calc(100vh - 135px);
+    
 }
 footer{
     height: 50px;
