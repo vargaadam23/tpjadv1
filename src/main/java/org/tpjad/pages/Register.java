@@ -14,6 +14,7 @@ import org.apache.tapestry5.corelib.components.TextField;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.hibernate.Session;
 import org.tpjad.entities.User;
+import org.tpjad.services.interfaces.UserServiceInterface;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -28,6 +29,9 @@ public class Register
     @Inject
     private Session session;
 
+    @Inject
+    private UserServiceInterface userService;
+
     @InjectComponent
     private Form register;
 
@@ -41,13 +45,13 @@ public class Register
     private TextField lastNameField;
 
     @InjectComponent("phone")
-    private TextField phoneFiled;
+    private TextField phoneField;
 
     @InjectComponent("password")
     private PasswordField passwordField;
 
     @InjectComponent("username")
-    private TextField usernameFiled;
+    private TextField usernameField;
 
     @Property
     private String email;
@@ -70,7 +74,21 @@ public class Register
     void onValidateFromRegister()
     {
         if (email.length()<=2)
-            register.recordError(emailField, "Length too small");
+            register.recordError(emailField, "Length too short");
+        if (username.length()<=2)
+            register.recordError(usernameField, "Length too short");
+        if (password.length()<=2)
+            register.recordError(passwordField, "Length too short");
+        if (phone.length()<=2)
+            register.recordError(phoneField, "Length too short");
+        if (firstName.length()<=2)
+            register.recordError(firstNameField, "Length too short");
+        if (lastName.length()<=2)
+            register.recordError(lastNameField, "Length too short");
+        if(userService.findByUsername(username)!=null){
+            register.recordError(usernameField, "Username already exists");
+        }
+        
     }
 
     Object onSuccessFromRegister()

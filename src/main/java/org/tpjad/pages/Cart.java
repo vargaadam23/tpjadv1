@@ -66,6 +66,9 @@ public class Cart {
     private TextField addressField;
 
     @Property
+    private String disabled;
+
+    @Property
     private String judet;
 
     @Property
@@ -82,6 +85,7 @@ public class Cart {
         this.message = message;
     }
 
+    
     public Set<Book> getBooks(){
         return cart.getBooks();
     }
@@ -188,11 +192,14 @@ public class Cart {
                 cart.setTotal(0.0);
                 this.total = cart.getTotal().toString();
                 message = "No items in cart";
+                disabled= "disabled";
             } else {
                 if(cart.getBooks().isEmpty()){
                     message = "No items in cart";
+                    disabled= "disabled";
                 }else{
                     message = "Shopping Cart";
+                    disabled= "";
                 }
                 cart.setTotal();
                 this.total = cart.getTotal().toString();

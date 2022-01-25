@@ -60,7 +60,7 @@
                 </div>
             </div>
             <div class="row btn-row">
-                <t:submit class="btn btn-large btn-primary" value="Order"/>
+                <t:submit class="btn btn-large btn-primary ${disabled}" value="Order"/>
             </div>
         </t:form>
           

@@ -14,7 +14,7 @@
     <div class="col-md-6 col-md-offset-3">
         <t:form t:id="login">
             <h2>Sign in</h2>
-            <t:textfield t:id="email" class="input-block-level" validate="required" placeholder="Email address"/>
+            <t:textfield t:id="email" class="input-block-level" validate="required" placeholder="Username"/>
             <t:passwordfield t:id="password" class="input-block-level" validate="required" placeholder="Password"/>
             <t:submit class="btn btn-large btn-primary" value="Sign in"/>
         </t:form>
