@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="3" passed="3">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Selenium Tests Suite" duration-ms="26988" started-at="2022-01-26T12:15:39Z" finished-at="2022-01-26T12:16:06Z">
+    <groups>
+      <group name="auth">
+        <method signature="AuthIntegrationTest.logout()[pri:0, instance:org.tpjad.integration.AuthIntegrationTest@69ee81fc]" name="logout" class="org.tpjad.integration.AuthIntegrationTest"/>
+        <method signature="AuthIntegrationTest.signin()[pri:0, instance:org.tpjad.integration.AuthIntegrationTest@69ee81fc]" name="signin" class="org.tpjad.integration.AuthIntegrationTest"/>
+      </group> <!-- auth -->
+      <group name="book">
+        <method signature="BookIntegrationTest.addBook()[pri:0, instance:org.tpjad.integration.BookIntegrationTest@3ddc6915]" name="addBook" class="org.tpjad.integration.BookIntegrationTest"/>
+      </group> <!-- book -->
+    </groups>
+    <test name="Integration Tests" duration-ms="26988" started-at="2022-01-26T12:15:39Z" finished-at="2022-01-26T12:16:06Z">
+      <class name="org.tpjad.integration.BookIntegrationTest">
+        <test-method status="PASS" signature="indicateTestMethodName(java.lang.reflect.Method)[pri:0, instance:org.tpjad.integration.BookIntegrationTest@3ddc6915]" name="indicateTestMethodName" is-config="true" duration-ms="0" started-at="2022-01-26T14:16:02Z" finished-at="2022-01-26T14:16:02Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void org.tpjad.integration.BookIntegrationTest.addBook()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- indicateTestMethodName -->
+        <test-method status="PASS" signature="addBook()[pri:0, instance:org.tpjad.integration.BookIntegrationTest@3ddc6915]" name="addBook" duration-ms="3238" started-at="2022-01-26T14:16:02Z" finished-at="2022-01-26T14:16:05Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addBook -->
+        <test-method status="PASS" signature="setup(org.testng.ITestContext)[pri:0, instance:org.tpjad.integration.BookIntegrationTest@3ddc6915]" name="setup" is-config="true" duration-ms="0" started-at="2022-01-26T14:16:02Z" finished-at="2022-01-26T14:16:02Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@4982fc4a]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="cleanupTestMethod()[pri:0, instance:org.tpjad.integration.BookIntegrationTest@3ddc6915]" name="cleanupTestMethod" is-config="true" duration-ms="0" started-at="2022-01-26T14:16:05Z" finished-at="2022-01-26T14:16:05Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- cleanupTestMethod -->
+        <test-method status="PASS" signature="cleanup()[pri:0, instance:org.tpjad.integration.BookIntegrationTest@3ddc6915]" name="cleanup" is-config="true" duration-ms="0" started-at="2022-01-26T14:16:05Z" finished-at="2022-01-26T14:16:05Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- cleanup -->
+      </class> <!-- org.tpjad.integration.BookIntegrationTest -->
+      <class name="org.tpjad.integration.AuthIntegrationTest">
+        <test-method status="PASS" signature="testStartup(org.testng.ITestContext, org.testng.xml.XmlTest)[pri:0, instance:org.tpjad.integration.AuthIntegrationTest@69ee81fc]" name="testStartup" is-config="true" duration-ms="18642" depends-on-groups="beforeStartup" started-at="2022-01-26T14:15:39Z" finished-at="2022-01-26T14:15:58Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@4982fc4a]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[[Test: "Integration Tests" verbose:1[parameters:tapestry.browser-start-command=>*googlechrometapestry.servlet-container=>tomcat6tapestry.port=>8080][metagroups:] [included: ][excluded: ]  classes:[XmlClass class=org.tpjad.integration.AuthIntegrationTest] [XmlClass class=org.tpjad.integration.BookIntegrationTest]  packages:] ]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testStartup -->
+        <test-method status="PASS" signature="setup(org.testng.ITestContext)[pri:0, instance:org.tpjad.integration.AuthIntegrationTest@69ee81fc]" name="setup" is-config="true" duration-ms="0" started-at="2022-01-26T14:15:58Z" finished-at="2022-01-26T14:15:58Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@4982fc4a]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="indicateTestMethodName(java.lang.reflect.Method)[pri:0, instance:org.tpjad.integration.AuthIntegrationTest@69ee81fc]" name="indicateTestMethodName" is-config="true" duration-ms="0" started-at="2022-01-26T14:15:58Z" finished-at="2022-01-26T14:15:58Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void org.tpjad.integration.AuthIntegrationTest.signin()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- indicateTestMethodName -->
+        <test-method status="PASS" signature="signin()[pri:0, instance:org.tpjad.integration.AuthIntegrationTest@69ee81fc]" name="signin" duration-ms="2100" started-at="2022-01-26T14:15:58Z" finished-at="2022-01-26T14:16:00Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- signin -->
+        <test-method status="PASS" signature="indicateTestMethodName(java.lang.reflect.Method)[pri:0, instance:org.tpjad.integration.AuthIntegrationTest@69ee81fc]" name="indicateTestMethodName" is-config="true" duration-ms="0" started-at="2022-01-26T14:16:00Z" finished-at="2022-01-26T14:16:00Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void org.tpjad.integration.AuthIntegrationTest.logout()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- indicateTestMethodName -->
+        <test-method status="PASS" signature="cleanupTestMethod()[pri:0, instance:org.tpjad.integration.AuthIntegrationTest@69ee81fc]" name="cleanupTestMethod" is-config="true" duration-ms="0" started-at="2022-01-26T14:16:00Z" finished-at="2022-01-26T14:16:00Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- cleanupTestMethod -->
+        <test-method status="PASS" signature="logout()[pri:0, instance:org.tpjad.integration.AuthIntegrationTest@69ee81fc]" name="logout" duration-ms="2100" started-at="2022-01-26T14:16:00Z" finished-at="2022-01-26T14:16:02Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- logout -->
+        <test-method status="PASS" signature="cleanup()[pri:0, instance:org.tpjad.integration.AuthIntegrationTest@69ee81fc]" name="cleanup" is-config="true" duration-ms="0" started-at="2022-01-26T14:16:02Z" finished-at="2022-01-26T14:16:02Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- cleanup -->
+        <test-method status="PASS" signature="cleanupTestMethod()[pri:0, instance:org.tpjad.integration.AuthIntegrationTest@69ee81fc]" name="cleanupTestMethod" is-config="true" duration-ms="0" started-at="2022-01-26T14:16:02Z" finished-at="2022-01-26T14:16:02Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- cleanupTestMethod -->
+        <test-method status="PASS" signature="testShutdown(org.testng.ITestContext)[pri:0, instance:org.tpjad.integration.AuthIntegrationTest@69ee81fc]" name="testShutdown" is-config="true" duration-ms="890" started-at="2022-01-26T14:16:05Z" finished-at="2022-01-26T14:16:06Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@4982fc4a]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testShutdown -->
+      </class> <!-- org.tpjad.integration.AuthIntegrationTest -->
+    </test> <!-- Integration Tests -->
+  </suite> <!-- Selenium Tests Suite -->
+</testng-results>

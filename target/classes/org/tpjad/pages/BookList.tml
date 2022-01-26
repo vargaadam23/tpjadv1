@@ -1,4 +1,4 @@
-<html t:type="layout" title="BookList | Ver1"
+<html t:type="layout" title="BookList | Bookstore"
       xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
       xmlns:p="tapestry:parameter">
 

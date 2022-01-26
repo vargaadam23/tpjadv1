@@ -52,7 +52,7 @@
 
                     <t:security.user>
                     <li class="nav-item">
-                        <t:actionlink class="nav-link" t:id="logout"> Log out </t:actionlink>   
+                        <t:actionlink class="nav-link" t:id="logout">Log out</t:actionlink>   
                     </li>
                     </t:security.user>
                 </ul>

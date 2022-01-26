@@ -8,9 +8,9 @@
 		<relativePath/>
 	</parent>
     <groupId>org.tpjad</groupId>
-    <artifactId>Ver1</artifactId>
+    <artifactId>Bookstore</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>Ver1 Tapestry 5 Application</name>
+    <name>TAPESTRY bookstore</name>
 	<properties>
         <java.version>1.8</java.version>
         <tapestry-version>5.7.3</tapestry-version>
@@ -205,6 +205,12 @@
             <version>${servlet-api-version}</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.apache.tapestry</groupId>
+            <artifactId>tapestry-test</artifactId>
+            <version>5.7.3</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 	<build>
 		<plugins>
@@ -212,6 +218,17 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+            <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>3.0.0-M5</version>
+           <configuration>
+                  <suiteXmlFiles>
+                     <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
+                  </suiteXmlFiles>
+                  <useSystemClassLoader>false</useSystemClassLoader>
+               </configuration>
+        </plugin>
 		</plugins>
 	</build>
 </project>

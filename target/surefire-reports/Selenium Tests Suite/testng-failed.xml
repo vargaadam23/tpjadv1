@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite verbose="0" name="Failed suite [Selenium Tests Suite]">
+  <parameter name="tapestry.browser-start-command" value="*googlechrome"/>
+  <parameter name="tapestry.servlet-container" value="tomcat6"/>
+  <parameter name="tapestry.port" value="8080"/>
+  <test name="Integration Tests(failed)">
+    <parameter name="tapestry.browser-start-command" value="*googlechrome"/>
+    <parameter name="tapestry.servlet-container" value="tomcat6"/>
+    <parameter name="tapestry.port" value="8080"/>
+    <classes>
+      <class name="org.tpjad.integration.AuthIntegrationTest">
+        <methods>
+          <include name="testShutdown"/>
+          <include name="cleanup"/>
+          <include name="setup"/>
+          <include name="cleanupTestMethod"/>
+          <include name="logout"/>
+          <include name="testStartup"/>
+          <include name="signin"/>
+          <include name="indicateTestMethodName"/>
+        </methods>
+      </class> <!-- org.tpjad.integration.AuthIntegrationTest -->
+      <class name="org.tpjad.integration.BookIntegrationTest">
+        <methods>
+          <include name="cleanup"/>
+          <include name="setup"/>
+          <include name="cleanupTestMethod"/>
+          <include name="indicateTestMethodName"/>
+        </methods>
+      </class> <!-- org.tpjad.integration.BookIntegrationTest -->
+    </classes>
+  </test> <!-- Integration Tests(failed) -->
+</suite> <!-- Failed suite [Selenium Tests Suite] -->

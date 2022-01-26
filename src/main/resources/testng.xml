@@ -1,0 +1,11 @@
+<suite name="Selenium Tests Suite" annotations="1.5">
+  <test name="Integration Tests" enabled="true">
+    <parameter name="tapestry.browser-start-command" value="*googlechrome" />
+    <parameter name="tapestry.port" value="8080" />
+    <parameter name="tapestry.servlet-container" value="tomcat6" />
+
+    <classes>
+      <class name="org.tpjad.tests.integration.AuthIntegrationTest"></class>
+    </classes>
+  </test>
+</suite>
